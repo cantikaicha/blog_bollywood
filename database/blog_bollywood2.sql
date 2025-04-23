@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Apr 2025 pada 21.46
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Host: localhost:3306
+-- Waktu pembuatan: 23 Apr 2025 pada 01.44
+-- Versi server: 8.0.30
+-- Versi PHP: 8.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
-  `title` varchar(150) NOT NULL,
-  `content` text NOT NULL,
-  `image_url` varchar(255) NOT NULL,
+  `id` int NOT NULL,
+  `title` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `content` text COLLATE utf8mb4_general_ci NOT NULL,
+  `image_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `publish_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,16 +40,16 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`id`, `title`, `content`, `image_url`, `publish_date`) VALUES
-(5, 'Kabhi Khushi Kabhie Gham', 'Anak 20-an pasti sudah tidak asing lagi dengan film legendaris ini...', '', '2025-04-17'),
-(6, 'Ek Villain', 'Film yang ditayangkan pada tahun 2014 ini berhasil mencuri perhatian...', '', '2025-04-17'),
-(7, 'Aashiqui 2', 'Film yang terkenal dengan soundtrack ‘Tum Hi Ho’ ini dirilis pada tahun 2013...', '', '2025-04-17'),
-(8, 'Padmavati', 'Film ini tayang pada tahun 2018 dengan latar kerajaan di India...', '', '2018-02-02'),
-(9, 'Sanam Teri Kasam', 'Film yang rilis pada tahun 2016 ini berhasil mencuri hati para penonton...', '', '2025-04-17'),
-(10, 'Teri Baaton Mein Aisa Uljha Jiya', 'Film ini rilis pada tahun 2024, menggabungkan AI dan kisah cinta manusia...', '', '2025-04-17'),
-(11, 'Dilwale', 'Film ini rilis tahun 2015 yang dibintangi oleh Kajol dan Shah Rukh Khan...', '', '2025-04-17'),
-(12, 'Ramaiya Vastavaiya', 'Film ini rilis pada tahun 2013, dibintangi oleh Girish Kumar dan Shruti Haasan...', '', '2025-04-17'),
-(13, 'Pal Pal Dil Ke Paas', 'Film bergenre romantis berlatar pendakian gunung dan cinta dua dunia berbeda...', '', '2025-04-17'),
-(14, 'Kal Ho Naa Ho', 'Film ini dirilis pada tahun 2003, dibintangi oleh Preity Zinta dan Shah Rukh Khan...', '', '2025-04-17');
+(5, 'Kabhi Khushi Kabhie Gham', 'Anak 20-an pasti sudah tidak asing lagi dengan film legendaris ini...', 'Picture1.jpg', '2025-04-17'),
+(6, 'Ek Villain', 'Film yang ditayangkan pada tahun 2014 ini berhasil mencuri perhatian...', 'Picture2.jpg', '2025-04-17'),
+(7, 'Aashiqui 2', 'Film yang terkenal dengan soundtrack ‘Tum Hi Ho’ ini dirilis pada tahun 2013...', 'Picture3.jpg', '2025-04-17'),
+(8, 'Padmavati', 'Film ini tayang pada tahun 2018 dengan latar kerajaan di India...', 'Picture4.jpg', '2018-02-02'),
+(9, 'Sanam Teri Kasam', 'Film yang rilis pada tahun 2016 ini berhasil mencuri hati para penonton...', 'Picture5.jpg', '2025-04-17'),
+(10, 'Teri Baaton Mein Aisa Uljha Jiya', 'Film ini rilis pada tahun 2024, menggabungkan AI dan kisah cinta manusia...', 'Picture6.jpg', '2025-04-17'),
+(11, 'Dilwale', 'Film ini rilis tahun 2015 yang dibintangi oleh Kajol dan Shah Rukh Khan...', 'Picture7.jpg', '2025-04-17'),
+(12, 'Ramaiya Vastavaiya', 'Film ini rilis pada tahun 2013, dibintangi oleh Girish Kumar dan Shruti Haasan...', 'Picture8.jpg', '2025-04-17'),
+(13, 'Pal Pal Dil Ke Paas', 'Film bergenre romantis berlatar pendakian gunung dan cinta dua dunia berbeda...', 'Picture9.jpg', '2025-04-17'),
+(14, 'Kal Ho Naa Ho', 'Film ini dirilis pada tahun 2003, dibintangi oleh Preity Zinta dan Shah Rukh Khan...', 'Picture10.jpg', '2025-04-17');
 
 -- --------------------------------------------------------
 
@@ -58,8 +58,8 @@ INSERT INTO `article` (`id`, `title`, `content`, `image_url`, `publish_date`) VA
 --
 
 CREATE TABLE `article_author` (
-  `article_id` int(11) DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL
+  `article_id` int DEFAULT NULL,
+  `author_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -85,8 +85,8 @@ INSERT INTO `article_author` (`article_id`, `author_id`) VALUES
 --
 
 CREATE TABLE `article_category` (
-  `article_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL
+  `article_id` int DEFAULT NULL,
+  `category_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -124,9 +124,9 @@ INSERT INTO `article_category` (`article_id`, `category_id`) VALUES
 --
 
 CREATE TABLE `author` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `bio` text NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `bio` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -144,8 +144,8 @@ INSERT INTO `author` (`id`, `name`, `bio`) VALUES
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -204,19 +204,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT untuk tabel `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `author`
 --
 ALTER TABLE `author`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

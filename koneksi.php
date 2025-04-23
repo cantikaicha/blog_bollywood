@@ -1,12 +1,13 @@
 <?php
-// Koneksi ke database
 $host = 'localhost';
 $user = 'root';
-$password = '';
-$database = 'blog_bollywood';
+$pass = '';
+$db   = 'blog_bollywood2';
+// $db   = 'blog_bollywood';
 
-$conn = new mysqli($host, $user, $password, $database);
+$conn = mysqli_connect($host, $user, $pass, $db);
 
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error() . ". Pastikan detail koneksi database sudah benar.");
+} 
+?>
